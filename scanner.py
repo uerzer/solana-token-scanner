@@ -12,7 +12,11 @@ from pathlib import Path
 import time
 
 # Configuration
-HELIUS_API_KEY = "a2645403-e2f9-4bc9-806c-927051e0718a"
+import os
+HELIUS_API_KEY = os.getenv("HELIUS_API_KEY")
+if not HELIUS_API_KEY:
+    raise ValueError("HELIUS_API_KEY environment variable must be set")
+
 PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
 BASE_URL = "https://api.helius.xyz/v0"
 RPC_URL = f"https://mainnet.helius-rpc.com/?api-key={HELIUS_API_KEY}"
